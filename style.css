@@ -1,0 +1,132 @@
+*{
+  box-sizing: border-box;
+  font-family: "DejaVu Sans Mono", "DejaVu LGC Sans Mono","Lucida Sans","Andale Mono",
+  "Bitstream Vera Sans Mono", "Liberation Mono", Monaco, monospace;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+main{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title{
+  margin: 2em 0 1em 0;
+}
+.main-content {
+  width: 34vw;
+}
+
+
+
+.input-field{
+  display: flex;
+  justify-content: space-between;
+  margin: 2em 0;
+}
+#input-task {
+  width: 65%;
+}
+
+#add-task-button{
+  min-width: 168px;
+}
+.checkbox{
+  /*margin-right: 0.5em;*/
+  /*transform: scale(3);*/
+}
+
+input.checkbox {
+  width: 1.2em;
+  height: 1.2em;
+}
+ul {
+  list-style-type:none
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 0;
+}
+.task-div {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .main-content {
+    width: 50vw;
+  }
+  .input-field{
+    display: flex;
+    flex-direction: column;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 1em 0;
+  }
+  #input-task {
+    width: 100%;
+    margin-bottom: 4.5px;
+  }
+  #add-task-button{
+    width: 30%;
+  }
+}
+@media (max-width: 600px) {
+
+  .main-content {
+    width: 90vw;
+  }
+  .task{
+    font-size: 0.7em;
+  }
+  .button-div {
+    justify-self: flex-start;
+  }
+  #add-task-button{
+    width: 100%;
+  }
+}
+
+.task {
+  width: 90%;
+  word-wrap: break-word;
+  padding: 0.5em 1em;
+}
+
+button{
+  background-color: white; /* Green */
+  border: 2px solid black;
+  color: black;
+  font-size: .8em;
+  padding: 0.2em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: lowercase;
+  box-shadow: 0 3px #bbb;
+}
+
+button:hover {
+  background-color: #aaa;
+  box-shadow: 0 3px #bbb;
+}
+
+button:active {
+  background-color: #aaa;
+  box-shadow: 0 1px #bbb;
+  transform: translateY(2px);
+}
+
+
+
+
+
