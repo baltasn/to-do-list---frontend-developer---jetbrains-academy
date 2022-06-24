@@ -35,14 +35,10 @@ main{
 #add-task-button{
   min-width: 168px;
 }
-.checkbox{
-  /*margin-right: 0.5em;*/
-  /*transform: scale(3);*/
-}
 
 input.checkbox {
-  width: 1.2em;
-  height: 1.2em;
+  min-width: 1.2em;
+  min-height: 1.2em;
 }
 ul {
   list-style-type:none
