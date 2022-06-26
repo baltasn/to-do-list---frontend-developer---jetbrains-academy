@@ -6,9 +6,9 @@ const btnAddTask = document.getElementById("add-task-button");
 const tasksEl = document.querySelector(".tasks");
 
 const taskList = [
-  // {task: "Email David", done: false},
-  // {task: "Create ideal user persona guide", done: false},
-  // {task: "Set up A/B test", done: false}
+  {task: "Email David", done: false},
+  {task: "Create ideal user persona guide", done: false},
+  {task: "Set up A/B test", done: false}
 ];
 
 let tasksListEl;
@@ -20,10 +20,17 @@ function addTaskToList() {
     newTaskInputField.value = "";
     tasksListEl = document.createElement("ul");
     tasksListEl.setAttribute("id", "task-list");
-    tasksEl.replaceChildren(tasksListEl)
-    taskList.forEach(createTaskElement)
-    console.log(taskList);
+    tasksEl.replaceChildren(tasksListEl);
+    taskList.forEach(createTaskElement);
+
   }
+}
+
+function initialize() {
+  tasksListEl = document.createElement("ul");
+  tasksListEl.setAttribute("id", "task-list");
+  tasksEl.replaceChildren(tasksListEl);
+  taskList.forEach(createTaskElement);
 }
 
 function createTaskElement(task,taskIndex) {
@@ -70,10 +77,10 @@ function createTaskElement(task,taskIndex) {
 }
 
 
-
+initialize();
 btnAddTask.addEventListener("click", addTaskToList);
 
-
+/*
 newTaskInputField.value = "Email David";
 btnAddTask.click();
 
@@ -82,5 +89,5 @@ btnAddTask.click();
 
 newTaskInputField.value = "Set up A/B test";
 btnAddTask.click();
-
+*/
 
