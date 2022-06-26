@@ -57,6 +57,7 @@ function createTaskElement(task,taskIndex) {
     taskListArray.splice(taskIndex, 1);
     const element = document.getElementById(`task-item-${taskIndex}`);
     element.remove();
+    initialize();
   });
   btnDeleteTask.innerHTML = "delete";
 
