@@ -40,6 +40,17 @@ input.checkbox {
   min-width: 1.2em;
   min-height: 1.2em;
 }
+/*
+input[type=checkbox] + span {
+  text-decoration: none;
+}
+
+input[type=checkbox]:checked + span {
+  text-decoration: line-through;
+  text-decoration-thickness: 5px;
+}
+*/
+
 ul {
   list-style-type:none
 }
@@ -97,6 +108,13 @@ li {
   width: 90%;
   word-wrap: break-word;
   padding: 0.5em 1em;
+  text-decoration: none;
+}
+
+
+.task--checked{
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
 }
 
 button{

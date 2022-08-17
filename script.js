@@ -4,7 +4,7 @@
 const newTaskInputField = document.getElementById("input-task");
 const btnAddTask = document.getElementById("add-task-button");
 const tasksEl = document.querySelector(".tasks");
-const taskList = document.querySelector("#task-list");
+//const taskList = document.querySelector("#task-list");
 
 
 const taskListArray = [
@@ -20,7 +20,7 @@ function addTaskToList() {
   if(newTaskInputField.value !== ""){
     taskListArray.push({task: newTaskInputField.value, done: false});
     newTaskInputField.value = "";
-    taskList.appendChild(createTaskElement(taskListArray[taskListArray.length-1], taskListArray.length - 1));
+    createTaskElement(taskListArray[taskListArray.length-1], taskListArray.length - 1);
   }
 }
 
@@ -37,12 +37,25 @@ function createTaskElement(task,taskIndex) {
   taskCheckBox.setAttribute("class" ,"checkbox");
   taskCheckBox.setAttribute("type" ,"checkbox");
   taskCheckBox.setAttribute("id", `task-checkbox-${taskIndex}`);
-  taskCheckBox.checked = task.checked;
+  taskCheckBox.checked = task.done;
+
 
   const taskText = document.createElement("span");
   taskText.setAttribute("class", "task");
   taskText.setAttribute("id", `task-${taskIndex}`);
   taskText.innerHTML = task.task;
+
+  if(taskCheckBox.checked) {
+    taskText.classList.toggle("task--checked");
+    //taskText.style.textDecoration =  "line-through";////change
+  }
+
+  taskCheckBox.addEventListener("change", function () {
+    taskText.classList.toggle("task--checked");
+    //taskText.style.textDecoration =  "line-through";////change
+    task.done = !task.done;
+    console.log(window.getComputedStyle(taskText).textDecoration.includes("line-through"));
+  });
 
   const taskDivEl = document.createElement("div");
   taskDivEl.setAttribute("class", "task-div");
@@ -57,7 +70,6 @@ function createTaskElement(task,taskIndex) {
     taskListArray.splice(taskIndex, 1);
     const element = document.getElementById(`task-item-${taskIndex}`);
     element.remove();
-    initialize();
   });
   btnDeleteTask.innerHTML = "delete";
 
@@ -80,18 +92,4 @@ btnAddTask.addEventListener("click", addTaskToList);
 
 
 
-
-/*
-
-INITIALIZE LIST BY EMULATING INPUT BUTTON CLICK
-
-newTaskInputField.value = "Email David";
-btnAddTask.click();
-
-newTaskInputField.value = "Create ideal user persona guide";
-btnAddTask.click();
-
-newTaskInputField.value = "Set up A/B test";
-btnAddTask.click();
-*/
 
