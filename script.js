@@ -4,14 +4,8 @@
 const newTaskInputField = document.getElementById("input-task");
 const btnAddTask = document.getElementById("add-task-button");
 const tasksEl = document.querySelector(".tasks");
-//const taskList = document.querySelector("#task-list");
 
-
-const taskListArray = [
-  {task: "Email David", done: false},
-  {task: "Create ideal user persona guide", done: false},
-  {task: "Set up A/B test", done: false}
-];
+const taskListArray = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let tasksListEl;
 
@@ -19,6 +13,7 @@ let tasksListEl;
 function addTaskToList() {
   if(newTaskInputField.value !== ""){
     taskListArray.push({task: newTaskInputField.value, done: false});
+    localStorage.setItem("tasks", JSON.stringify(taskListArray));
     newTaskInputField.value = "";
     createTaskElement(taskListArray[taskListArray.length-1], taskListArray.length - 1);
   }
@@ -52,8 +47,8 @@ function createTaskElement(task,taskIndex) {
 
   taskCheckBox.addEventListener("change", function () {
     taskText.classList.toggle("task--checked");
-    //taskText.style.textDecoration =  "line-through";////change
     task.done = !task.done;
+    localStorage.setItem("tasks", JSON.stringify(taskListArray));
     console.log(window.getComputedStyle(taskText).textDecoration.includes("line-through"));
   });
 
@@ -68,6 +63,7 @@ function createTaskElement(task,taskIndex) {
   btnDeleteTask.setAttribute("id", `btn--delete-${taskIndex}`);
   btnDeleteTask.addEventListener("click",function (){
     taskListArray.splice(taskIndex, 1);
+    localStorage.setItem("tasks", JSON.stringify(taskListArray));
     const element = document.getElementById(`task-item-${taskIndex}`);
     element.remove();
   });
